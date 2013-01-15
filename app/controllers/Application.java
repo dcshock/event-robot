@@ -1,14 +1,15 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import models.ScheduledProcess;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
 
-import views.html.*;
+import com.avaje.ebean.Ebean;
 
 public class Application extends Controller {
-  
-  public static Result index() {
-    return ok(index.render("Your new application is ready."));
-  }
-  
+	public static Result index() {
+		Ebean.find(ScheduledProcess.class, 1L);
+		return ok(index.render("Your new application is ready."));
+	}
 }
