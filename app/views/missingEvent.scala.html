@@ -4,8 +4,8 @@
 @import helper.twitterBootstrap._
 @implicitFieldConstructor = @{ FieldConstructor(bsinput.f) }
 
-@main("Event Watch") {
-	<h1>Event Watch</h1>
+@main("Create Missing Event Watch") {
+	<h1>Missing Event Watch</h1>
 	@fieldsetform(action = routes.MissingEvents.save()) {
 		@inputText(eventForm("event"), 
 			'_label -> "What event would you like to watch?")
