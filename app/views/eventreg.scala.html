@@ -9,7 +9,7 @@
     <ul>
         @for(e <- events) {
             <li>
-                @e.event - @e.desc - @e.lackof
+                @e.event - @e.desc - @e.lackof - @e.timing - @e.what - @e.getNextRun()
                 
                 @form(routes.Events.delete(e.id)) {
                 	<input type="submit" value="Delete" />
@@ -23,6 +23,18 @@
 		@inputText(eventForm("event"))
 		@inputText(eventForm("desc"))
 		@checkbox(eventForm("lackof"))
+		
+		<pre>
+Seconds
+Minutes
+Hours
+Day-of-Month
+Month
+Day-of-Week
+Year (optional field)
+		</pre>
+		@inputText(eventForm("timing"))
+		@inputText(eventForm("what"))
 		<input type="submit" value="Create" />	
 	}
 }
