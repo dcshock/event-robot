@@ -1,4 +1,4 @@
-@(events: List[EventReg], eventForm: Form[EventReg])
+@(eventForm: Form[EventWatch])
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -6,7 +6,7 @@
 
 @main("Event Watch") {
 	<h1>Event Watch</h1>
-	@fieldsetform(action = routes.Events.newEvent()) {
+	@fieldsetform(action = routes.Events.save()) {
 		@inputText(eventForm("event"), 
 			'_label -> "What event would you like to watch?")
 		@inputText(eventForm("desc"),
@@ -14,19 +14,6 @@
 			'class -> "input-xxlarge")
 		@inputText(eventForm("does"),
 			'_label -> "What should happen if this event does occur?")
-		@inputText(eventForm("does"),
-			'_label -> "What should happen if this event doesn't occur?")
-		@inputText(eventForm("timing"),
-			'_label -> "Doesn't occur by?")
-			<p class="text-info"><small>
-Seconds
-Minutes
-Hours
-Day-of-Month
-Month
-Day-of-Week
-Year (optional field)
-		</small></p>
 			
 		<input class="btn btn-primary" type="submit" value="Create" />	
 	}

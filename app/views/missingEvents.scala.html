@@ -1,4 +1,4 @@
-@(events: List[EventWatch])
+@(events: List[MissingEventWatch])
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -13,9 +13,11 @@
             <div class="hero-unit">
                 Event: @e.event<br />
                 Desc : @e.desc<br />
-                Do What?: @e.does<br />
+                Timing: @e.timing<br />
+                Do What?: @e.doesnt<br />
+                Next Run: @e.getNextRun()<br />
                 
-                @fieldsetform(routes.Events.delete(e.id)) {
+                @fieldsetform(routes.MissingEvents.delete(e.id)) {
                 	<input class="btn" type="submit" value="Delete" />
                 }
             </div>

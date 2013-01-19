@@ -1,0 +1,31 @@
+@(eventForm: Form[MissingEventWatch])
+
+@import helper._
+@import helper.twitterBootstrap._
+@implicitFieldConstructor = @{ FieldConstructor(bsinput.f) }
+
+@main("Event Watch") {
+	<h1>Event Watch</h1>
+	@fieldsetform(action = routes.MissingEvents.save()) {
+		@inputText(eventForm("event"), 
+			'_label -> "What event would you like to watch?")
+		@inputText(eventForm("desc"),
+			'_label -> "What is the purpose of this watch?",
+			'class -> "input-xxlarge")
+		@inputText(eventForm("doesnt"),
+			'_label -> "What should happen if this event doesn't occur?")
+		@inputText(eventForm("timing"),
+			'_label -> "Doesn't occur by?")
+			<p class="text-info"><small>
+Seconds
+Minutes
+Hours
+Day-of-Month
+Month
+Day-of-Week
+Year (optional field)
+		</small></p>
+			
+		<input class="btn btn-primary" type="submit" value="Create" />	
+	}
+}
