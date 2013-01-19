@@ -1,0 +1,27 @@
+@(events: List[EventReg], eventForm: Form[EventReg])
+
+@import helper._
+@import helper.twitterBootstrap._
+@implicitFieldConstructor = @{ FieldConstructor(bsinput.f) }
+
+@main("Events Registered") {
+	<h1>Current Events</h1>
+	    <h1>@events.size() events(s)</h1>
+    
+    <ul>
+        @for(e <- events) {
+            <div class="hero-unit">
+                Event: @e.event<br />
+                Desc : @e.desc<br />
+                Lack of: @e.lackof<br />
+                Timing: @e.timing<br />
+                Do What?: @e.what<br />
+                Next Run: @e.getNextRun()<br />
+                
+                @fieldsetform(routes.Events.delete(e.id)) {
+                	<input class="btn" type="submit" value="Delete" />
+                }
+            </div>
+        }
+    </ul>
+}

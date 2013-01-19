@@ -1,35 +1,18 @@
 @(events: List[EventReg], eventForm: Form[EventReg])
 
 @import helper._
+@import helper.twitterBootstrap._
+@implicitFieldConstructor = @{ FieldConstructor(bsinput.f) }
 
 @main("Event Registration") {
-	<h1>Current Events</h1>
-	    <h1>@events.size() events(s)</h1>
-    
-    <ul>
-        @for(e <- events) {
-            <div>
-                Event: @e.event<br />
-                Desc : @e.desc<br />
-                Lack of: @e.lackof<br />
-                Timing: @e.timing<br />
-                Do What?: @e.what<br />
-                Next Run: @e.getNextRun()<br />
-                
-                @form(routes.Events.delete(e.id)) {
-                	<input type="submit" value="Delete" />
-                }
-            </div>
-        }
-    </ul>
-
 	<h1>Event Registration</h1>
-	@form(routes.Events.newEvent()) {
+	@fieldsetform(action = routes.Events.newEvent()) {
 		@inputText(eventForm("event"))
 		@inputText(eventForm("desc"))
 		@checkbox(eventForm("lackof"))
 		
-		<pre>
+		<blockquote>
+		<p>
 Seconds
 Minutes
 Hours
@@ -37,9 +20,10 @@ Day-of-Month
 Month
 Day-of-Week
 Year (optional field)
-		</pre>
+		</p>
+		</blockquote>
 		@inputText(eventForm("timing"))
 		@inputText(eventForm("what"))
-		<input type="submit" value="Create" />	
+		<input class="btn btn-primary" type="submit" value="Create" />	
 	}
 }

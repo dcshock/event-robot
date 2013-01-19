@@ -8,6 +8,11 @@ import play.mvc.Result;
 public class Events extends Controller {
 	static Form<EventReg> eventForm = form(EventReg.class);
 	public static Result events() {
+		return ok(views.html.events.render(
+			EventReg.find.all(), eventForm));
+	}
+	
+	public static Result newForm() {
 		return ok(views.html.eventreg.render(
 			EventReg.find.all(), eventForm));
 	}
