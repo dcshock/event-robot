@@ -1,0 +1,28 @@
+@(events: List[EventReg], eventForm: Form[EventReg])
+
+@import helper._
+
+@main("Event Registration") {
+	<h1>Current Events</h1>
+	    <h1>@events.size() events(s)</h1>
+    
+    <ul>
+        @for(e <- events) {
+            <li>
+                @e.event - @e.desc - @e.lackof
+                
+                @form(routes.Events.delete(e.id)) {
+                	<input type="submit" value="Delete" />
+                }
+            </li>
+        }
+    </ul>
+
+	<h1>Event Registration</h1>
+	@form(routes.Events.newEvent()) {
+		@inputText(eventForm("event"))
+		@inputText(eventForm("desc"))
+		@checkbox(eventForm("lackof"))
+		<input type="submit" value="Create" />	
+	}
+}

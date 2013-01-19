@@ -7,6 +7,7 @@ import views.html.index;
 
 import com.avaje.ebean.Ebean;
 
+
 public class Application extends Controller {
 	public static Result index() {
 		Ebean.find(ScheduledProcess.class, 1L);
