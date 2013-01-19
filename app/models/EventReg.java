@@ -12,6 +12,7 @@ import org.quartz.CronExpression;
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
+import eventrobot.validation.CronLine;
 
 @Entity
 @Table
@@ -26,6 +27,7 @@ public class EventReg extends Model {
 	
 	public Boolean lackof;
 	
+	@CronLine
 	public String timing;
 	
 	public String what;
@@ -35,7 +37,7 @@ public class EventReg extends Model {
 		try {
 			return new CronExpression(timing).getNextValidTimeAfter(new Date()).toString();
 		} catch (ParseException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return null;
 	}

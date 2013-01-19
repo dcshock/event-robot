@@ -14,6 +14,8 @@ public class Events extends Controller {
 	
 	public static Result newEvent() {
 		Form<EventReg> f = eventForm.bindFromRequest();
+		
+		
 		if (f.hasErrors()) {
 			return badRequest(
 				views.html.eventreg.render(EventReg.find.all(), f)
