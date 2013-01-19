@@ -25,12 +25,12 @@ public class EventReg extends Model {
 	
 	public String desc;
 	
-	public Boolean lackof;
-	
 	@CronLine(required=false)
 	public String timing;
 	
-	public String what;
+	public String does;
+	
+	public String doesnt;
 	
 	@Transient
 	public String getNextRun() {
