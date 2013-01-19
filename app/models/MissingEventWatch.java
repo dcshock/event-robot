@@ -16,7 +16,7 @@ import eventrobot.validation.CronLine;
 
 @Entity
 @Table
-public class LackOfEventWatch extends Model {
+public class MissingEventWatch extends Model {
 	@Id
 	public Long id;
 	
@@ -41,8 +41,8 @@ public class LackOfEventWatch extends Model {
 		}
 	}
 	
-	public static Finder<Long, LackOfEventWatch> find = new Finder<Long, LackOfEventWatch>(
-	    Long.class, LackOfEventWatch.class);
+	public static Finder<Long, MissingEventWatch> find = new Finder<Long, MissingEventWatch>(
+	    Long.class, MissingEventWatch.class);
 	
 	public static void delete(Long id) {
 		find.ref(id).delete();
