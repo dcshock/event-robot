@@ -8,13 +8,18 @@
     
     <ul>
         @for(e <- events) {
-            <li>
-                @e.event - @e.desc - @e.lackof - @e.timing - @e.what - @e.getNextRun()
+            <div>
+                Event: @e.event<br />
+                Desc : @e.desc<br />
+                Lack of: @e.lackof<br />
+                Timing: @e.timing<br />
+                Do What?: @e.what<br />
+                Next Run: @e.getNextRun()<br />
                 
                 @form(routes.Events.delete(e.id)) {
                 	<input type="submit" value="Delete" />
                 }
-            </li>
+            </div>
         }
     </ul>
 
