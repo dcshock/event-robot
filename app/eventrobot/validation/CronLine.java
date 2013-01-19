@@ -14,8 +14,7 @@ import javax.validation.Payload;
 @play.data.Form.Display(name = "Cron format")
 public @interface CronLine {
 	String message() default CronLineValidator.message;
-
+	boolean required() default true;
 	Class<?>[] groups() default {};
-
 	Class<? extends Payload>[] payload() default {};
 }

@@ -12,8 +12,13 @@ public class CronLineValidator extends Validator<String>
   implements ConstraintValidator<CronLine, String> {
 	static final String message = "Invalid cron line";
 	
+	private boolean required = true;
+	
 	@Override
 	public boolean isValid(String arg0) {
+		if (!required && (arg0 == null || arg0.length() == 0))
+			return true;
+		
 		try {
 			new CronExpression(arg0);
 			return true;
@@ -23,6 +28,7 @@ public class CronLineValidator extends Validator<String>
 	}
 
 	@Override
-	public void initialize(CronLine arg0) {
+	public void initialize(CronLine a) {
+		required = a.required();
 	}
 }

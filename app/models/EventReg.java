@@ -27,7 +27,7 @@ public class EventReg extends Model {
 	
 	public Boolean lackof;
 	
-	@CronLine
+	@CronLine(required=false)
 	public String timing;
 	
 	public String what;
@@ -35,11 +35,11 @@ public class EventReg extends Model {
 	@Transient
 	public String getNextRun() {
 		try {
-			return new CronExpression(timing).getNextValidTimeAfter(new Date()).toString();
+			return new CronExpression(timing)
+				.getNextValidTimeAfter(new Date()).toString();
 		} catch (ParseException e) {
-			//e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 	
 	public static Finder<Long, EventReg> find = new Finder<Long, EventReg>(
