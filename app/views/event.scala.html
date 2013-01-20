@@ -12,9 +12,10 @@
 		@inputText(eventForm("desc"),
 			'_label -> "What is the purpose of this watch?",
 			'class -> "input-xxlarge")
-		@inputText(eventForm("does"),
-			'_label -> "What should happen if this event does occur?")
-			
+		@select(eventForm("does"), 
+				options("e-mail"->"e-mail", "jms"->"jms", "plsql"->"plsql"),
+				'_default -> "",
+				'_label -> "What should happen if this event occurs?")
 		<input class="btn btn-primary" type="submit" value="Create" />	
 	}
 }

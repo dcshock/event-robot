@@ -12,7 +12,9 @@
 		@inputText(eventForm("desc"),
 			'_label -> "What is the purpose of this watch?",
 			'class -> "input-xxlarge")
-		@inputText(eventForm("doesnt"),
+		@select(eventForm("does"), 
+			options("e-mail"->"e-mail", "jms"->"jms", "plsql"->"plsql"),
+			'_default -> "",
 			'_label -> "What should happen if this event doesn't occur?")
 		@inputText(eventForm("timing"),
 			'_label -> "Doesn't occur by?")
