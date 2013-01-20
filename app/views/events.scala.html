@@ -7,18 +7,24 @@
 @main("Events Registered") {
 	<h1>Current Events</h1>
 	    <h1>@events.size() events(s)</h1>
-    
-    <ul>
+    <div class="hero-unit">
+    <table class="table table-striped">
+    	<tr>
+    		<th>Event</th>
+    		<th>Desc</th>
+    		<th>Do What?</th>
+    		<th></th>
+    	</tr>
         @for(e <- events) {
-            <div class="hero-unit">
-                Event: @e.event<br />
-                Desc : @e.desc<br />
-                Do What?: @e.does<br />
-                
-                @fieldsetform(routes.Events.delete(e.id)) {
-                	<input class="btn btn-danger" type="submit" value="Delete" />
-                }
-            </div>
+        	<tr>
+	            <td>@e.event</td>
+	            <td>@e.desc</td>
+	            <td>@e.does</td>
+	            <td>@form(routes.Events.delete(e.id)) {
+	            	<input class="btn btn-danger" type="submit" value="Delete" />
+	            }</td>
+            </tr>
         }
-    </ul>
+    </table>
+    </div>
 }
