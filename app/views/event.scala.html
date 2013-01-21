@@ -1,9 +1,16 @@
-@(eventForm: Form[EventWatch])
+@(eventForm: Form[EventWatch], actions: Map[String, String])
 
 @import helper._
 @import helper.twitterBootstrap._
 @implicitFieldConstructor = @{ FieldConstructor(bsinput.f) }
 
+@action = {
+	@select(eventForm("todos.action.id"), 
+			options(actions),
+			'_default -> "",
+			'_label -> "What should happen if this event occurs?")
+}
+			
 @main("Event Watch") {
 	<h1>Event Watch</h1>
 	@fieldsetform(action = routes.Events.save()) {
@@ -12,10 +19,8 @@
 		@inputText(eventForm("desc"),
 			'_label -> "What is the purpose of this watch?",
 			'class -> "input-xxlarge")
-		@select(eventForm("does"), 
-				options("e-mail"->"e-mail", "jms"->"jms", "plsql"->"plsql"),
-				'_default -> "",
-				'_label -> "What should happen if this event occurs?")
+		@action
+		@action
 		<input class="btn btn-primary" type="submit" value="Create" />	
 	}
 }

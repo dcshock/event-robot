@@ -19,7 +19,11 @@
         	<tr>
 	            <td>@e.event</td>
 	            <td>@e.desc</td>
-	            <td>@e.does</td>
+	            <td><ul>
+					@for(todo <- e.todos) {
+					    <li>@todo.action.desc</li>
+				    }
+				</ul></td>
 	            <td>@form(routes.Events.delete(e.id)) {
 	            	<input class="btn btn-danger" type="submit" value="Delete" />
 	            }</td>
