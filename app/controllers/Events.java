@@ -26,25 +26,24 @@ public class Events extends Controller {
 	
 	public static Result save() {
 		Form<EventWatch> f = eventForm.bindFromRequest();
-		
-		final Map<String, String[]> urlFormEncoded = 
-			Controller.request().body().asFormUrlEncoded();
-		for (String s : urlFormEncoded.get("todos.action.id")) {
-			Long actionId = Long.parseLong(s);
-			EventAction action = EventAction.find.ref(actionId);
-			
-			EventWatchAction watchAction = new EventWatchAction();
-			watchAction.action = action;
-			watchAction.event = f.get();
-			
-			f.get().todos.add(watchAction);
-		}
-		
 		if (f.hasErrors()) {
 			return badRequest(
 				views.html.event.render(f, EventAction.toMap())
 			);
 		} else {
+			final Map<String, String[]> urlFormEncoded = 
+				Controller.request().body().asFormUrlEncoded();
+			for (String s : urlFormEncoded.get("todos.action.id")) {
+				Long actionId = Long.parseLong(s);
+				EventAction action = EventAction.find.ref(actionId);
+				
+				EventWatchAction watchAction = new EventWatchAction();
+				watchAction.action = action;
+				watchAction.event = f.get();
+				
+				f.get().todos.add(watchAction);
+			}
+		
 			f.get().save();
 			for (EventWatchAction action : f.get().todos)
 				Ebean.save(action);

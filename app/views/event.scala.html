@@ -5,7 +5,7 @@
 @implicitFieldConstructor = @{ FieldConstructor(bsinput.f) }
 
 @action = {
-	@select(eventForm("todos.action.id"), 
+	@select(eventForm("todos[0].action.id"), 
 			options(actions),
 			'_default -> "",
 			'_label -> "What should happen if this event occurs?")
@@ -20,7 +20,10 @@
 			'_label -> "What is the purpose of this watch?",
 			'class -> "input-xxlarge")
 		@action
-		@action
+		@select(eventForm("todos[1].action.id"), 
+			options(actions),
+			'_default -> "",
+			'_label -> "What should happen if this event occurs?")
 		<input class="btn btn-primary" type="submit" value="Create" />	
 	}
 }
