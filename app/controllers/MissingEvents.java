@@ -6,7 +6,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 public class MissingEvents extends Controller {
-	static Form<MissingEventWatch> missingForm = form(MissingEventWatch.class);
+	static Form<MissingEventWatch> missingForm = Form.form(MissingEventWatch.class);
 	
 	public static Result create() {
 		return ok(views.html.missingEvent.render(missingForm));

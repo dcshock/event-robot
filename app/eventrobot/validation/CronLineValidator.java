@@ -7,6 +7,7 @@ import javax.validation.ConstraintValidator;
 import org.quartz.CronExpression;
 
 import play.data.validation.Constraints.Validator;
+import play.libs.F.Tuple;
 
 public class CronLineValidator extends Validator<String> 
   implements ConstraintValidator<CronLine, String> {
@@ -26,6 +27,11 @@ public class CronLineValidator extends Validator<String>
 		}
 		return false;
 	}
+
+    public Tuple<String, Object[]> getErrorMessageKey() {
+        return null;
+    }	
+
 
 	@Override
 	public void initialize(CronLine a) {

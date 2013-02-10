@@ -12,11 +12,11 @@ import play.mvc.Result;
 import com.avaje.ebean.Ebean;
 
 public class Events extends Controller {
-	static Form<EventWatch> eventForm = form(EventWatch.class);
+	static Form<EventWatch> eventForm = Form.form(EventWatch.class);
 	
 	public static Result list() {
 		return ok(views.html.events.render(
-			EventWatch.find.join("todos.action").findList()
+			EventWatch.find.fetch("todos.action").findList()
 		));
 	}
 	
